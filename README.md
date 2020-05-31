@@ -11,13 +11,8 @@ brew cask install vagrant virtualbox
 # install vagrant plugins
 vagrant plugin install vagrant-disksize vagrant-vbguest
 
-curl -OL https://github.com/salmanwaheed/vagrant-secure-machine/archive/v1.0.tar.gz
-
-# untar
-tar -xzf v1.0.tar.gz && cd v1.0.tar.gz
-
-# install
-./install.sh
+# install vagrant secure machine
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/salmanwaheed/vagrant-secure-machine/master/install.sh)"
 ```
 
 ## TODO
