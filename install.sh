@@ -137,6 +137,10 @@ echo """Important Information:
     CPUs: $CPUs
     Using Disk Space: $DISK_SIZE
     Installed directory: $INSTALL_DIR
-    ssh-config:
-        $(vagrant ssh-config)
+
+    visit for more docs: https://www.vagrantup.com/docs/cli
+    to see config run 'vagrant ssh-config'
+    to run the machine run 'vagrant up'
+    to stop the machine 'vagrant halt'
+    to completely remove virtual machine + vagrant machine run 'vagrant destroy'
 """
