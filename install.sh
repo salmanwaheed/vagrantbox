@@ -14,6 +14,22 @@ DISK_SIZE=20GB
 INSTALL_DIR=~/ubuntu
 VAGRANT_KEY=$INSTALL_DIR/.vagrant/machines/default/virtualbox/private_key
 
+command_exists() {
+  command -v "$@" >/dev/null 2>&1
+}
+
+install_package() {
+  if ! command_exists "$@"; then
+    brew cask install "$@"
+  fi
+}
+
+install_package vagrant virtualbox
+
+if command_exists; then
+  vagrant plugin install vagrant-disksize vagrant-vbguest
+fi
+
 # remove know hosts
 sed -i '' "/^\[$HOST_IP\]:$HOST_PORT/d" ~/.ssh/known_hosts && echo "Removed [$HOST_IP]:$HOST_PORT ECDSA key fingerprint from ~/.ssh/known_hosts."
 

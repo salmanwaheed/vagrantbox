@@ -5,12 +5,7 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 **Install**
 
 ```
-# install apps
-brew cask install vagrant virtualbox
-
-# install vagrant plugins
-vagrant plugin install vagrant-disksize vagrant-vbguest
-
+# visit https://brew.sh/   to install homebrew
 # install vagrant secure machine
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/salmanwaheed/vagrant-secure-machine/master/install.sh)"
 ```
