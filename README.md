@@ -1,6 +1,6 @@
 # Vagrant Secure Machine
 
-We must be procteded our data while using 3rd party vagrant boxes, ISOs, VDIs.
+We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 
 **Install**
 
