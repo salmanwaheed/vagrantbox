@@ -34,7 +34,8 @@ fi
 sed -i '' "/^\[$HOST_IP\]:$HOST_PORT/d" ~/.ssh/known_hosts && echo "Removed [$HOST_IP]:$HOST_PORT ECDSA key fingerprint from ~/.ssh/known_hosts."
 
 # create dir where installtion need to be ran
-[ -d "$INSTALL_DIR" ] && rm -rf "$INSTALL_DIR" && mkdir -p "$INSTALL_DIR/.ssh" && echo "$INSTALL_DIR dir is created."
+[ -d "$INSTALL_DIR" ] && rm -rf "$INSTALL_DIR" && echo "old $INSTALL_DIR is removed!"
+[ ! -d "$INSTALL_DIR" ] && mkdir -p "$INSTALL_DIR/.ssh" && echo "$INSTALL_DIR dir is created."
 
 # generate random key everytime
 ssh-keygen -t rsa -b 4096 -C "$USERNAME@$DOMAIN" -f "$INSTALL_DIR/.ssh/id_rsa"
