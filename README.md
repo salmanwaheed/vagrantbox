@@ -12,10 +12,10 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 
 ## TODO
 
-* [ ] random username
-* [ ] random ssh port
-* [ ] random forwarded port
-* [ ] random machine names
+* [x] random username
+* [x] random ssh host port
+* [ ] random ssh guest port
+* [x] random machine names
 * [x] random ssh key every installations
 * [x] remove all other users except random generated
 * [x] user must set the password during installtions

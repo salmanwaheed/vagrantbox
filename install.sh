@@ -2,20 +2,16 @@
 
 set -e
 
-USERNAME='machine001'
-DOMAIN='localhost'
-GUEST_PORT=22
-HOST_PORT=6181
-HOST_IP=127.0.0.1
-PRIVATE_NETWORK=192.168.10.10
-RAM=1024
-CPUs=1
-DISK_SIZE=20GB
-INSTALL_DIR=~/ubuntu
-VAGRANT_KEY=$INSTALL_DIR/.vagrant/machines/default/virtualbox/private_key
-
 command_exists() {
   command -v "$@" >/dev/null 2>&1
+}
+
+random_value() {
+  CHARS=$1
+  for i in $(seq 1 $2); do
+    echo -n "${CHARS:$RANDOM%${#CHARS}:1}"
+  done
+  echo
 }
 
 install_package() {
@@ -24,18 +20,36 @@ install_package() {
   fi
 }
 
+USERNAME=$(random_value abcd1234ABCD 8)
+DOMAIN='local'
+GUEST_PORT=22
+HOST_PORT=$(random_value 65535 4)
+HOST_IP=127.0.0.1
+PRIVATE_NETWORK=192.168.10.10
+RAM=1024
+CPUs=1
+DISK_SIZE=20GB
+INSTALL_DIR=~/ubuntu
+VAGRANT_KEY=$INSTALL_DIR/.vagrant/machines/default/virtualbox/private_key
+
 install_package vagrant virtualbox
 
-if command_exists; then
-  vagrant plugin install vagrant-disksize vagrant-vbguest
+if command_exists vagrant; then
+  required_plugins=("vagrant-disksize" "vagrant-vbguest")
+  existed_plugins=($(for plugin_name in $(vagrant plugin list | awk '{print $1}' | xargs); do echo "$plugin_name"; done))
+  for index in ${!required_plugins[*]}; do
+    if [[ ! "${existed_plugins[@]}" =~ "${required_plugins[$index]}" ]]; then
+      vagrant plugin install ${required_plugins[$index]}
+    fi
+  done
 fi
 
 # remove know hosts
-sed -i '' "/^\[$HOST_IP\]:$HOST_PORT/d" ~/.ssh/known_hosts && echo "Removed [$HOST_IP]:$HOST_PORT ECDSA key fingerprint from ~/.ssh/known_hosts."
+sed -i '' "/^\[$HOST_IP\]:$HOST_PORT/d" $HOME/.ssh/known_hosts && echo "Removed [$HOST_IP]:$HOST_PORT ECDSA key fingerprint from $HOME/.ssh/known_hosts."
 
 # create dir where installtion need to be ran
 [ -d "$INSTALL_DIR" ] && rm -rf "$INSTALL_DIR" && echo "old $INSTALL_DIR is removed!"
-[ ! -d "$INSTALL_DIR" ] && mkdir -p "$INSTALL_DIR/.ssh" && echo "$INSTALL_DIR dir is created."
+[ ! -d "$INSTALL_DIR" ] && mkdir -p "$INSTALL_DIR/.ssh" && echo "$INSTALL_DIR dir is created!"
 
 # generate random key everytime
 ssh-keygen -t rsa -b 4096 -C "$USERNAME@$DOMAIN" -f "$INSTALL_DIR/.ssh/id_rsa"
@@ -140,6 +154,7 @@ echo """Important Information:
     Installed directory: $INSTALL_DIR
 
     visit for more docs: https://www.vagrantup.com/docs/cli
+    run 'cd $INSTALL_DIR' first then follow below steps
     to see config run 'vagrant ssh-config'
     to run the machine run 'vagrant up'
     to stop the machine 'vagrant halt'
