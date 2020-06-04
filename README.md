@@ -4,9 +4,12 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 
 **Install**
 
-```
-# visit https://brew.sh/   to install homebrew
-# install vagrant secure machine
+* You must install these packages first
+  * https://github.com/salmanwaheed/bash-lib
+  * https://brew.sh/
+
+```bash
+# after installed bash-lib & homebrew (for mac) you can run this command
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/salmanwaheed/vagrant-secure-machine/master/install.sh)"
 ```
 

@@ -2,28 +2,16 @@
 
 set -e
 
-command_exists() {
-  command -v "$@" >/dev/null 2>&1
-}
-
-random_value() {
-  CHARS=$1
-  for i in $(seq 1 $2); do
-    echo -n "${CHARS:$RANDOM%${#CHARS}:1}"
-  done
-  echo
-}
-
 install_package() {
-  if ! command_exists "$@"; then
+  if ! bash-lib has_pkg "$@"; then
     brew cask install "$@"
   fi
 }
 
-USERNAME=$(random_value abcd1234ABCD 8)
+USERNAME=$(bash-lib random abcd1234ABCD 8)
 DOMAIN='local'
 GUEST_PORT=22
-HOST_PORT=$(random_value 65535 4)
+HOST_PORT=$(bash-lib random 65535 4)
 HOST_IP=127.0.0.1
 PRIVATE_NETWORK=192.168.10.10
 RAM=1024
@@ -34,7 +22,7 @@ VAGRANT_KEY=$INSTALL_DIR/.vagrant/machines/default/virtualbox/private_key
 
 install_package vagrant virtualbox
 
-if command_exists vagrant; then
+if bash-lib has_pkg vagrant; then
   required_plugins=("vagrant-disksize" "vagrant-vbguest")
   existed_plugins=($(for plugin_name in $(vagrant plugin list | awk '{print $1}' | xargs); do echo "$plugin_name"; done))
   for index in ${!required_plugins[*]}; do
