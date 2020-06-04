@@ -17,7 +17,7 @@ PRIVATE_NETWORK=192.168.10.10
 RAM=1024
 CPUs=1
 DISK_SIZE=20GB
-INSTALL_DIR=~/ubuntu
+INSTALL_DIR=~/ubuntu-${USERNAME}
 VAGRANT_KEY=$INSTALL_DIR/.vagrant/machines/default/virtualbox/private_key
 
 install_package vagrant virtualbox
