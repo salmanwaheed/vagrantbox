@@ -49,7 +49,7 @@ AUTHORIZED_KEYS=$(cat $INSTALL_DIR/.ssh/id_rsa.pub)
 cat <<EOF > "$INSTALL_DIR/Vagrantfile"
 Vagrant.configure("2") do |config|
     # box name
-    config.vm.box = "ubuntu/xenial64"
+    config.vm.box = "ubuntu/groovy64"
     # machine name
     config.vm.define "$USERNAME"
     # hostname
