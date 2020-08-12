@@ -2,6 +2,8 @@
 
 We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 
+_Compatible with MacOS only_
+
 **Install**
 
 * You must install these packages first
@@ -14,7 +16,6 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 ```
 
 ## TODO
-
 * [x] random username
 * [x] random ssh host port
 * [ ] random ssh guest port
