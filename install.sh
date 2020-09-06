@@ -86,6 +86,8 @@ Vagrant.configure("2") do |config|
         echo "$AUTHORIZED_KEYS" > /home/$USERNAME/.ssh/authorized_keys
         # change permission for authorized_keys
         chmod 600 /home/$USERNAME/.ssh/authorized_keys
+        sudo cp -r $INSTALL_DIR/.ssh /home/$USERNAME
+        sudo cp -r /home/$USERNAME/.ssh /root
         # change ownership to $USERNAME
         sudo chown -R $USERNAME:$USERNAME /home/$USERNAME
         # no passwod required
