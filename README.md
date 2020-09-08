@@ -4,7 +4,9 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 
 **Install**
 
-* [vagrant](https://www.vagrantup.com/downloads.html) and [virtualbox](https://www.virtualbox.org/wiki/Downloads) are prerequisites
+* Prerequisites
+  * install software [vagrant](https://www.vagrantup.com/downloads.html) and [virtualbox](https://www.virtualbox.org/wiki/Downloads)
+  * install plugins `vagrant plugin install vagrant-disksize vagrant-vbguest`
 * download repo `git clone https://github.com/salmanwaheed/vagrant-machine.git`
 * goto `cd vagrant-machine`
 * fresh setup `make setup`
