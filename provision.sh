@@ -4,8 +4,9 @@
 if [ ! `sed -n "/^$1/p" /etc/passwd` ]; then
   sudo useradd -m -s /bin/bash -U $1 -c $1 -p $(openssl passwd -crypt $2)
 
-  # .ssh dir
+  # generate ssh
   sudo mkdir -p /home/$1/.ssh
+  ssh-keygen -t rsa -b 4096 -f /home/$1/.ssh/id_rsa  -q -P "" <<<y 2>&1 >/dev/null
   sudo chmod 700 /home/$1/.ssh
 
   # .ssh auth key

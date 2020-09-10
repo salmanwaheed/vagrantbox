@@ -4,7 +4,7 @@ destroy:
 	@make unset_config
 	@echo "uninstalled vagrant machine"
 
-setup: gen_ssh_key vagrant_up set_config vagrant_reload remove_old_private_key
+setup: gen_ssh_key vagrant_up set_config remove_old_private_key
 	@vagrant ssh-config
 	@echo "Installed vagrant machine :)"
 	@echo ""
@@ -25,17 +25,13 @@ vagrant_up:
 	@echo "virtual machine is ready"
 
 unset_config:
-	@sed -i '' -e 's/    config\.ssh\.username/    #config\.ssh\.username/' Vagrantfile
-	@sed -i '' -e 's/    config\.ssh\.private_key_path/    #config\.ssh\.private_key_path/' Vagrantfile
+	@sed -i '' -e 's/    box\.ssh\.username/    #box\.ssh\.username/' Vagrantfile
+	@sed -i '' -e 's/    box\.ssh\.private_key_path/    #box\.ssh\.private_key_path/' Vagrantfile
 	@echo "configuration has unset"
 
 set_config:
-	@sed -i '' -e 's/    #config/    config/' Vagrantfile
+	@sed -i '' -e 's/    #box/    box/' Vagrantfile
 	@echo "configuration has updated"
-
-vagrant_reload:
-	@vagrant reload
-	@echo "vagrant reloaded"
 
 remove_old_private_key:
 	@rm -rf "${PWD}/.vagrant/machines/*/virtualbox/private_key"
