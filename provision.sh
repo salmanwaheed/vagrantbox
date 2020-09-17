@@ -35,4 +35,15 @@ if [ ! `sed -n "/^$1/p" /etc/passwd` ]; then
   # delete existed users
   sudo userdel -rf vagrant >/dev/null 2>&1
   sudo userdel -rf ubuntu >/dev/null 2>&1
+
+  # if [ ! `command -v docker >/dev/null 2>&1` ]; then
+  #   sudo apt-get install -y docker.io
+  #   sudo usermod -aG docker $1
+  #   sudo chown -R $1:$1 /var/run/docker.sock
+  # fi
+
+  # if [ ! `command -v docker-compose >/dev/null 2>&1` ]; then
+  #   sudo curl -sL "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/bin/docker-compose
+  #   sudo chmod +x /usr/bin/docker-compose
+  # fi
 fi

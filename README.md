@@ -12,6 +12,8 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 * fresh setup `make setup`
 * remove the machine `make destroy`
 * login via ssh `vagrant ssh`
+* stop machine `vagrant halt`
+* start machine `vagrant up`
 
 ## Tips to learn advance
 
