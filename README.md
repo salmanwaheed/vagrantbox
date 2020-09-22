@@ -9,15 +9,15 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
   * install plugins `vagrant plugin install vagrant-disksize vagrant-vbguest`
 * download repo `git clone https://github.com/salmanwaheed/devops-box.git`
 * goto `cd devops-box`
-* fresh setup `make setup`
-* remove the machine `make destroy`
+* first time installation `make setup`
+* use `make destroy` instead of `vagrant destroy -f`
 * login via ssh `vagrant ssh`
 * stop machine `vagrant halt`
 * start machine `vagrant up`
 
 ## Tips to learn advance
 
-#### run any command without going inside the machine via 
+#### run any command without going inside the machine via
 
 ```ssh -p <PORT> -i <ID_RSA_PATH> <USER@DOMAIN> 'ANY-LINUX-COMMAND'```
 
