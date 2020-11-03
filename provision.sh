@@ -24,7 +24,7 @@ if [ ! `sed -n "/^$1/p" /etc/passwd` ]; then
   echo "root:$3" | chpasswd
 
   # authorized without passwd
-  echo "%$1 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$1
+  echo "$1 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$1
 
   # delete existed users
   userdel -rf vagrant >/dev/null 2>&1
