@@ -1,4 +1,4 @@
-# Vagrant Machine
+# devops-box
 
 We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 
@@ -7,13 +7,18 @@ We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 * Prerequisites
   * install software [vagrant](https://www.vagrantup.com/downloads.html) and [virtualbox](https://www.virtualbox.org/wiki/Downloads)
   * install plugins `vagrant plugin install vagrant-disksize vagrant-vbguest`
-* download repo `git clone https://github.com/salmanwaheed/devops-box.git`
-* goto `cd devops-box`
-* first time installation `make setup`
+* clone repo `git clone https://github.com/salmanwaheed/devops-box.git`
+* go into the directory `cd devops-box`
+* first/one time installation `make setup`
 * use `make destroy` instead of `vagrant destroy -f`
-* login via ssh `vagrant ssh`
-* stop machine `vagrant halt`
-* start machine `vagrant up`
+* if you are in current directory where vagrantbox has setup
+  * login via ssh `vagrant ssh <USERNAME>`
+  * stop machine `vagrant halt <USERNAME>`
+  * start machine `vagrant up <USERNAME>`
+* otherwise run `vagrant global-status` get the ID and then
+  * login `vagrant ssh <ID>`
+  * start machine `vagrant up <ID>`
+  * stop machine `vagrant halt <ID>`
 
 ## Tips to learn advance
 
