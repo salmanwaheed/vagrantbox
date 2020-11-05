@@ -10,17 +10,17 @@ env_boxes = {
     disk_size: "10GB",
     box: "ubuntu/bionic64",
   },
-  :live => {
-    user: "live-user",
-    pass: "live123@",
-    root_pass: "LiveRoot123@",
-    port: 2050,
-    ip: "192.168.55.66",
-    ram: 1024,
-    cpus: 1,
-    disk_size: "10GB",
-    box: "ubuntu/bionic64",
-  }
+#  :live => {
+#    user: "live-user",
+#    pass: "live123@",
+#    root_pass: "LiveRoot123@",
+#    port: 2050,
+#    ip: "192.168.55.66",
+#    ram: 1024,
+#    cpus: 1,
+#    disk_size: "10GB",
+#    box: "ubuntu/bionic64",
+#  }
 }
 
 Vagrant.configure(2) do |config|
