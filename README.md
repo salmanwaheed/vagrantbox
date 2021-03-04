@@ -2,8 +2,8 @@
 
 We must be protected our data while using 3rd party vagrant boxes, ISOs, VDIs.
 
-[Linux Cheatsheets](https://deletify.app/cheatsheets/linux/)
-[Vagrant Cheatsheets](https://deletify.app/cheatsheets/vagrant/)
+- [Linux Cheatsheets](https://deletify.app/cheatsheets/linux/)
+- [Vagrant Cheatsheets](https://deletify.app/cheatsheets/vagrant/)
 
 ## Install
 _Virtualbox or any relavent tool is required to run Vagrant._
