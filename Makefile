@@ -1,3 +1,15 @@
+ifeq ($(OS), Windows_NT)
+  detected_OS := Windows
+else
+  detected_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+endif
+
+# MacOS X
+QUOTE := -i
+ifeq ($(detected_OS), Darwin)
+	QUOTE := -i ''
+endif
+
 destroy:
 	@vagrant destroy -f
 	@rm -rf .ssh .vagrant *.log
@@ -27,15 +39,14 @@ vagrant_up:
 	@echo "virtual machine is ready"
 
 unset_config:
-	@sed -i '' -e 's/      box\.ssh\.username/      #box\.ssh\.username/g' Vagrantfile
-	@sed -i '' -e 's/      box\.ssh\.private_key_path/      #box\.ssh\.private_key_path/' Vagrantfile
+	@sed $(QUOTE) 's/box\.ssh\.username/#box\.ssh\.username/g' Vagrantfile
+	@sed $(QUOTE) 's/box\.ssh\.private_key_path/#box\.ssh\.private_key_path/' Vagrantfile
 	@echo "configuration has unset"
 
 set_config:
-	@sed -i '' -e 's/      #box\.ssh/      box\.ssh/g' Vagrantfile
+	@sed $(QUOTE) "s/#box\.ssh/box\.ssh/g" Vagrantfile
 	@echo "configuration has updated"
 
 remove_old_private_key:
 	@rm -rf "${PWD}/.vagrant/machines/*/virtualbox/private_key"
 	@echo "removed unused data"
-
