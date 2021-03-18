@@ -4,6 +4,7 @@ env_boxes = {
     pass: "stg123@",
     root_pass: "StgRoot123@",
     port: 2040,
+    passwd_auth: "yes",
     ip: "192.168.66.16",
     ram: 1024,
     cpus: 1,
@@ -15,6 +16,7 @@ env_boxes = {
 #    pass: "live123@",
 #    root_pass: "LiveRoot123@",
 #    port: 2050,
+#    passwd_auth: "no",
 #    ip: "192.168.55.66",
 #    ram: 1024,
 #    cpus: 1,
@@ -44,7 +46,13 @@ Vagrant.configure(2) do |config|
 
       if File.exist?(".ssh/id_rsa.pub")
         box.vm.provision :shell, path: "provision.sh",
-            args: [value[:user], value[:pass], value[:root_pass], File.read('.ssh/id_rsa.pub')],
+            args: [
+              value[:user],
+              value[:pass],
+              value[:root_pass],
+              File.read('.ssh/id_rsa.pub'),
+              value[:passwd_auth]
+            ],
             privileged: true
       end
 
