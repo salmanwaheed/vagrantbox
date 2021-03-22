@@ -1,3 +1,4 @@
+project_name = "deletify"
 env_boxes = {
   :staging => {
     user: "stg-user",
@@ -22,6 +23,18 @@ env_boxes = {
 #    cpus: 1,
 #    disk_size: "10GB",
 #    box: "ubuntu/bionic64",
+#  },
+#  :jenkins => {
+#    user: "jenkins-user",
+#    pass: "jenkins123@",
+#    root_pass: "JenkinsRoot123@",
+#    port: 2050,
+#    passwd_auth: "no",
+#    ip: "192.168.99.12",
+#    ram: 1024,
+#    cpus: 1,
+#    disk_size: "10GB",
+#    box: "ubuntu/bionic64",
 #  }
 }
 
@@ -29,7 +42,7 @@ Vagrant.configure(2) do |config|
   env_boxes.each do |env_as_key, value|
     config.vm.define "#{value[:user]}" do |box|
       box.vm.box = value[:box]
-      box.vm.hostname = env_as_key
+      box.vm.hostname = project_name
       box.vm.box_check_update = false
       box.vm.network "private_network", ip: value[:ip]
       box.vm.synced_folder ".", "/vagrant", disabled: true
@@ -40,7 +53,7 @@ Vagrant.configure(2) do |config|
       box.vm.provider "virtualbox" do |vb|
         vb.gui = false
         vb.cpus = value[:cpus]
-        vb.name = "#{value[:user]}@#{env_as_key}"
+        vb.name = "#{value[:user]}@#{project_name}"
         vb.memory = value[:ram]
       end
 

@@ -24,9 +24,10 @@ $ brew cask install virtualbox vagrant
 - [Vagrant 32-bit](https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_i686.msi)
 
 ## Prerequisites
-1. Create directory `mkdir my-vagrant` and go into `cd my-vagrant`
-1. Download/clone current repository
-1. Install required plugins
+1. Clone the repository `git clone git@github.com:deletify/vagrantbox.git <PROJECT_NAME>`
+1. Go into `cd <PROJECT_NAME>`
+1. Open the `vim Vagrantfile` and change `project_name="<PROJECT_NAME>"`
+1. Install required plugins, if you don't installed yet
 ```sh
 $ vagrant plugin install vagrant-disksize vagrant-vbguest
 ```
