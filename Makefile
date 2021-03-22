@@ -14,6 +14,7 @@ destroy:
 	@vagrant destroy -f
 	@rm -rf .ssh .vagrant *.log
 	@make unset_config
+	@make clean_known_hosts_file
 	# @vagrant global-status --prune
 	@echo "uninstalled vagrant machine"
 
@@ -50,3 +51,7 @@ set_config:
 remove_old_private_key:
 	@rm -rf "${PWD}/.vagrant/machines/*/virtualbox/private_key"
 	@echo "removed unused data"
+
+clean_known_hosts_file:
+	@sed $(QUOTE) "/^192\.168\.*\.*/d" ~/.ssh/known_hosts
+	@echo "clean known_hosts file"
