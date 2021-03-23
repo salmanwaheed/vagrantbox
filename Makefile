@@ -32,7 +32,7 @@ setup: gen_ssh_key vagrant_up set_config remove_old_private_key
 
 gen_ssh_key:
 	@mkdir -p "${PWD}/.ssh"
-	@ssh-keygen -t rsa -b 4096 -f "${PWD}/.ssh/id_rsa"  -q -P "" <<<y 2>&1 >/dev/null
+	@ssh-keygen -t rsa -b 4096 -C "" -f "${PWD}/.ssh/id_rsa" -q -P "" <<<y 2>&1 >/dev/null
 	@echo "ssh keys are generated"
 
 vagrant_up:

@@ -1,0 +1,35 @@
+project_name: deletify
+machines:
+  staging:
+    user: stg-user
+    pass: stg123@
+    root_pass: StgRoot123@
+    port: 2040
+    passwd_auth: yes
+    ip: 192.168.66.16
+    ram: 1024
+    cpus: 1
+    disk_size: 10GB
+    box: ubuntu/bionic64
+  # live:
+  #   user: live-user
+  #   pass: live123@
+  #   root_pass: LiveRoot123@
+  #   port: 2050
+  #   passwd_auth: no
+  #   ip: 192.168.55.66
+  #   ram: 1024
+  #   cpus: 1
+  #   disk_size: 10GB
+  #   box: ubuntu/bionic64
+  # jenkins:
+  #   user: jenkins-user
+  #   pass: jenkins123@
+  #   root_pass: JenkinsRoot123@
+  #   port: 2050
+  #   passwd_auth: no
+  #   ip: 192.168.99.12
+  #   ram: 1024
+  #   cpus: 1
+  #   disk_size: 10GB
+  #   box: ubuntu/bionic64
