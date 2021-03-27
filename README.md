@@ -27,19 +27,16 @@ $ brew cask install virtualbox vagrant
 1. Clone the repository `git clone git@github.com:deletify/vagrantbox.git <PROJECT_NAME>`
 1. Go into `cd <PROJECT_NAME>`
 1. Open the `vim config.yml`, replace `project_name: <PROJECT_NAME>` and add multiple machines if you want (`staging` is default machine)
-1. Install required plugins, if you don't installed yet
-```sh
-$ vagrant plugin install vagrant-disksize vagrant-vbguest
-```
+1. Install required plugins `vagrant plugin install vagrant-disksize vagrant-vbguest` if you don't installed yet
 
 ## Setting Up a Virtual Machine
 - first/one time installation `make setup`
 - use `make destroy` instead of `vagrant destroy -f`
-- if you are in `my-vagrant` directory
+- if you are in `<PROJECT_NAME>` directory
   * login via ssh `vagrant ssh <USERNAME>`
   * stop machine `vagrant halt <USERNAME>`
   * start machine `vagrant up <USERNAME>`
-* if you are outside the `my-vagrant` directory then run `vagrant global-status` and get the `ID`
+* if you are outside the `<PROJECT_NAME>` directory then run `vagrant global-status` and get the `ID`
   * login `vagrant ssh <ID>`
   * start machine `vagrant up <ID>`
   * stop machine `vagrant halt <ID>`
