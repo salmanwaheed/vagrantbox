@@ -40,12 +40,12 @@ vagrant_up:
 	@echo "virtual machine is ready"
 
 unset_config:
-	@sed $(QUOTE) 's/box\.ssh\.username/#box\.ssh\.username/g' Vagrantfile
-	@sed $(QUOTE) 's/box\.ssh\.private_key_path/#box\.ssh\.private_key_path/' Vagrantfile
+	@sed $(QUOTE) 's/conf\.ssh\.username/#conf\.ssh\.username/g' Vagrantfile
+	@sed $(QUOTE) 's/conf\.ssh\.private_key_path/#conf\.ssh\.private_key_path/' Vagrantfile
 	@echo "configuration has unset"
 
 set_config:
-	@sed $(QUOTE) "s/#box\.ssh/box\.ssh/g" Vagrantfile
+	@sed $(QUOTE) "s/#conf\.ssh/conf\.ssh/g" Vagrantfile
 	@echo "configuration has updated"
 
 remove_old_private_key:
