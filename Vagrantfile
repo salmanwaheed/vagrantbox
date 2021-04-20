@@ -41,7 +41,7 @@ if File.exists?(yaml_config_file)
         end
 
         private_key_path = "#{Dir.pwd}/.ssh/id_rsa"
-        public_key_path = "#{public_key_path}.pub"
+        public_key_path = "#{private_key_path}.pub"
         if File.file?(public_key_path)
           conf.vm.provision :shell,
             path: "provision.sh",
