@@ -6,7 +6,7 @@ if [ ! `sed -n "/^$1/p" /etc/passwd` ]; then
 
   # generate ssh
   mkdir -p /home/$1/.ssh
-  ssh-keygen -t rsa -b 4096 -f /home/$1/.ssh/id_rsa -C "${1}@`hostname`" -q -P "" <<<y 2>&1 >/dev/null
+  ssh-keygen -t rsa -b 4096 -f /home/$1/.ssh/id_rsa -C "${1}@$(hostname)" -q -P "" <<<y 2>&1 >/dev/null
   chmod 700 /home/$1/.ssh
 
   # enable passwd auth only for username ($1), root will still be disabled
@@ -39,7 +39,7 @@ EOF
   echo "root:$3" | chpasswd
 
   # authorized without passwd
-  echo "$1 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$1
+  echo "%$1 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$1
 
   # delete existed users
   userdel -rf vagrant >/dev/null 2>&1
