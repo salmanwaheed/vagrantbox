@@ -1,7 +1,6 @@
 #!/bin/bash
 
 if [ `which vagrant` ]; then
-
   if [ ! -f "$PWD/.ssh/id_rsa" ]; then
     echo "Nothing to destroy!!!!!"
     exit
@@ -11,7 +10,7 @@ if [ `which vagrant` ]; then
     && rm -rf "$PWD/.ssh" "$PWD/.vagrant" $PWD/*.log \
     && echo "Removed extra files." \
     && make clean_known_hosts_file \
-    && sed -i '' "s/SETUP_NEW_MACHINE=false/SETUP_NEW_MACHINE=true/g" "$PWD/.vagrantbox.conf" \
+    && make new_machine_true \
     && echo "Vagrant machine(s) have been destroy."
   fi
 else

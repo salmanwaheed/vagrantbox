@@ -7,12 +7,12 @@ if [ `which vagrant` ]; then
     && echo "Private and Public keys are generated." \
     || echo "Using existing Private and Public keys."
 
-  sed -i '' "s/SETUP_NEW_MACHINE=false/SETUP_NEW_MACHINE=true/g" "$PWD/.vagrantbox.conf"
+  make new_machine_true
 
   vagrant up \
-    && echo "virtual machine is ready" \
     && sleep 1 \
-    && sed -i '' 's/SETUP_NEW_MACHINE=true/SETUP_NEW_MACHINE=false/g' "$PWD/.vagrantbox.conf"
+    && make new_machine_false \
+    && echo "virtual machine is ready"
 else
   echo "Vagrant is not installed yet."
 fi
