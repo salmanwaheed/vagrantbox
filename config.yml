@@ -4,7 +4,7 @@ machines:
   - user: ub64 # required
     pass: ub64 # required
     port: 5590 # required
-    private_ip: "192.168.16.17" # required
+    private_ip: "192.168.56.17" # required
     # root_pass: <root-pass> # default: root
     # passwd_auth: <yes-or-no> # default: no
     # ram: <ram> # default: 1024
@@ -16,7 +16,7 @@ machines:
   # - user: redhat # required
   #   pass: redhat # required
   #   port: 5591 # required
-  #   private_ip: "192.168.16.19" # required
+  #   private_ip: "192.168.56.19" # required
   #   # root_pass: <root-pass> # default: root
   #   # passwd_auth: <yes-or-no> # default: no
   #   # ram: <ram> # default: 1024
