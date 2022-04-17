@@ -59,7 +59,7 @@ $machines.each do |value|
   value['ram']          = value['ram']                || 1024
   value['cpus']         = value['cpus']               || 1
   value['disk_size']    = value['disk_size']          || '10GB'
-  value['box']          = value['box']                || 'ubuntu/bionic64'
+  value['box']          = value['box']                || 'ubuntu/focal64'
 end
 
 $hosts_file = "#{Dir.pwd}/hosts"
